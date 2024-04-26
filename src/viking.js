@@ -12,6 +12,7 @@ class Soldier {
         this.health=this.health - damage;
     }
 }
+
 /*
 let soldier = new Soldier(100,100);
 
@@ -96,6 +97,7 @@ class War {
         return Math.floor(Math.random()*max);
     }
 
+
     vikingAttack(){
 
         let VikingPicker = this._Random(this.vikingArmy.length-1);
@@ -116,7 +118,7 @@ class War {
 
         */
 
-        let damage=RandomSaxon.receiveDamage(RandomViking.strength)
+        let damage=RandomSaxon?.receiveDamage(RandomViking.strength)
         this.saxonArmy=this.saxonArmy.filter(Saxon => Saxon.health>0);
         
         return damage;//`result of calling ${RandomViking.strength} of a ${RandomSaxon} with the ${RandomViking.strength} of a ${RandomViking}`;
@@ -137,12 +139,16 @@ class War {
         console.log(RandomSaxon.strength);
 
         */
-        const damage = RandomViking.receiveDamage(RandomSaxon.strength)
+        const damage = RandomViking?.receiveDamage(RandomSaxon.strength)
         this.vikingArmy=this.vikingArmy.filter(Saxon => Saxon.health>0);
         return damage;//`result of calling ${RandomSaxon.strength} of a ${RandomViking} with the ${RandomSaxon.strength} of a ${RandomSaxon}`;
     }
 
-    
+    BothAttack(){
+        this.vikingAttack();
+        this.saxonAttack();
+    }
+
     showStatus(){
         if(this.saxonArmy.length===0){
             return 'Vikings have won the war of the century!';
@@ -172,9 +178,11 @@ console.log(WarOfNortumbria.saxonArmy);
 console.log(WarOfNortumbria.vikingArmy.length);
 console.log(WarOfNortumbria.saxonArmy.length);
 */
-
+/*
+const WarOfNortumbria = new War();
 console.log(WarOfNortumbria.vikingAttack());
 console.log(WarOfNortumbria.saxonAttack());
+*/
 /*
 console.log(WarOfNortumbria.vikingArmy);
 console.log(WarOfNortumbria.saxonArmy);
