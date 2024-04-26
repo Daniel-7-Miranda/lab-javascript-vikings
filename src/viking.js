@@ -89,7 +89,7 @@ class War {
         this.saxonArmy.push(saxon);
     }
 
-    _Random(max){
+    #Random(max){
 
         //console.log(max);
         //console.log(Math.random()*max);
@@ -100,8 +100,8 @@ class War {
 
     vikingAttack(){
 
-        let VikingPicker = this._Random(this.vikingArmy.length-1);
-        let SaxonPicker = this._Random(this.saxonArmy.length-1);
+        let VikingPicker = this.#Random(this.vikingArmy.length-1);
+        let SaxonPicker = this.#Random(this.saxonArmy.length-1);
 
         
         //console.log(VikingPicker);
@@ -125,8 +125,8 @@ class War {
      }
 
     saxonAttack(){
-        let VikingPicker = this._Random(this.vikingArmy.length-1);
-        let SaxonPicker = this._Random(this.saxonArmy.length-1);
+        let VikingPicker = this.#Random(this.vikingArmy.length-1);
+        let SaxonPicker = this.#Random(this.saxonArmy.length-1);
 /*
         console.log(VikingPicker);
         console.log(SaxonPicker);
