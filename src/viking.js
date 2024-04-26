@@ -99,54 +99,43 @@ class War {
 
 
     vikingAttack(){
-
-        let VikingPicker = this.#Random(this.vikingArmy.length-1);
-        let SaxonPicker = this.#Random(this.saxonArmy.length-1);
-
-        
-        //console.log(VikingPicker);
-        //console.log(SaxonPicker);
-
-        let RandomViking = this.vikingArmy[VikingPicker];
-        let RandomSaxon = this.saxonArmy[SaxonPicker];
-
-        /*
-        console.log(RandomViking);
-        console.log(RandomViking.strength)
-
-        console.log(RandomSaxon);
-
-        */
-
-        let damage=RandomSaxon?.receiveDamage(RandomViking.strength)
-        this.saxonArmy=this.saxonArmy.filter(Saxon => Saxon.health>0);
-        
-        return damage;//`result of calling ${RandomViking.strength} of a ${RandomSaxon} with the ${RandomViking.strength} of a ${RandomViking}`;
+        this.genericAttack("Viking");
      }
 
     saxonAttack(){
-        let VikingPicker = this.#Random(this.vikingArmy.length-1);
-        let SaxonPicker = this.#Random(this.saxonArmy.length-1);
-/*
-        console.log(VikingPicker);
-        console.log(SaxonPicker);
-*/
+        this.genericAttack("Saxon");
+    /*
+        let VikingPicker = this.#Random(this.vikingArmy.length);
+        let SaxonPicker = this.#Random(this.saxonArmy.length);
+
         let RandomViking = this.vikingArmy[VikingPicker];
         let RandomSaxon = this.saxonArmy[SaxonPicker];
-/*
-        console.log(RandomViking);
-        console.log(RandomSaxon);
-        console.log(RandomSaxon.strength);
 
-        */
         const damage = RandomViking?.receiveDamage(RandomSaxon.strength)
-        this.vikingArmy=this.vikingArmy.filter(Saxon => Saxon.health>0);
+        this.vikingArmy=this.vikingArmy.filter(Viking => Viking.health>0);
         return damage;//`result of calling ${RandomSaxon.strength} of a ${RandomViking} with the ${RandomSaxon.strength} of a ${RandomSaxon}`;
+    */
     }
 
-    BothAttack(){
-        this.vikingAttack();
-        this.saxonAttack();
+    genericAttack(soldier){
+        let VikingPicker = this.#Random(this.vikingArmy.length);
+        let SaxonPicker = this.#Random(this.saxonArmy.length);
+
+        let RandomViking = this.vikingArmy[VikingPicker];
+        let RandomSaxon = this.saxonArmy[SaxonPicker];
+
+        if(soldier==="Viking"){
+            const damage=RandomSaxon?.receiveDamage(RandomViking.strength)
+            this.saxonArmy=this.saxonArmy.filter(Saxon => Saxon.health>0);
+        
+            return damage;
+
+        }
+        else if(soldier === "Saxon"){
+            const damage = RandomViking?.receiveDamage(RandomSaxon.strength)
+            this.vikingArmy=this.vikingArmy.filter(Viking => Viking.health>0);
+            return damage;
+        }
     }
 
     showStatus(){
